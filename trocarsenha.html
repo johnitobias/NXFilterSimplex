@@ -14,7 +14,9 @@
 
 <style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+*{
+	margin: 0;
+}
 .login-page {
 	width: 340px;
 	padding: 8% 0 0;
@@ -113,25 +115,45 @@
 }
 
 body {
-	background: #A2A2A2; /* fallback for old browsers */
+	background: rgba(90, 138, 219, 0.9);  /* fallback for old browsers */
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;      
+}
+header {
+			z-index: 2;
+			display: flex;
+			width: 100%;
+			background: rgba(40, 58, 90, 1);
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			height: 5em;
+}
+
+header img{
+			z-index: 2;
+			height: 5em;
 }
 </style>
 </head>
 
 <body>
 
+	<header>
+		<img src="IMG/logo.png" alt="">
+		
+	</header>
+
 <div class="login-page">
 	<div class="form">
 		<form method="post" action="block,password.jsp" class="password-form">
 			<input type="hidden" name="actionFlag" value="chgPw">
-			<input type="password" name="oldPw" placeholder="Current Password"/>
-			<input type="password" name="newPw1" placeholder="New Password"/>
-			<input type="password" name="newPw2" placeholder="Confirm Password"/>
-			<button>Update</button>
-			<p class="message" id="message">Changing password for #{user}.</p>
+			<input type="password" name="oldPw" placeholder="Senha Atual"/>
+			<input type="password" name="newPw1" placeholder="Nova Senha"/>
+			<input type="password" name="newPw2" placeholder="Confirmar Senha"/>
+			<button>Atualizar</button>
+			<p class="message" id="message">Alterando a senha para #{user}.</p>
 		</form>
 	</div>
 </div>
@@ -141,23 +163,23 @@ body {
 <script>
 $(document).ready(function(){
 	if(#{succ_flag}){
-		alert("Your password has been updated!");
+		alert("Sua senha foi atualizada!");
 		location.href = "block,login.jsp";
 	}
 	else if(#{fail_flag1}){
-		alert("Couldn't update your password!");
+		alert("Não foi possível atualizar sua senha!");
 	}
 	else if(#{fail_flag2}){
-		alert("Wrong password!");
+		alert("Senha incorreta!");
 	}
 	else if(#{fail_flag3}){
-		alert("Passwords don't match!");
+		alert("As senhas não correspondem!");
 	}
 	else if(#{fail_flag4}){
-		alert("Password length must be between 4 and 128!");
+		alert("A senha deve ter entre 4 e 128 caracteres!");
 	}
 	else if(#{fail_flag5}){
-		alert("Only alphabet, number, [-_] allowed in name!");
+		alert("Somente letras, número, [-_] são permitidos no nome!");
 	}
 });
 </script>

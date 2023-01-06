@@ -15,6 +15,9 @@
 <style type="text/css">
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+*{
+	margin: 0;
+}
 .login-page {
 	width: 340px;
 	padding: 8% 0 0;
@@ -113,24 +116,45 @@
 }
 
 body {
-	background: #A2A2A2; /* fallback for old browsers */
+	background: rgba(90, 138, 219, 0.9); /* fallback for old browsers */
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;      
 }
+
+header {
+			z-index: 2;
+			display: flex;
+			width: 100%;
+			background: rgba(40, 58, 90, 1);
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			height: 5em;
+		}
+
+		header img{
+			z-index: 2;
+			height: 5em;
+		}
 </style>
 </head>
 
 <body>
 
+	<header>
+		<img src="IMG/logo.png" alt="">
+		
+	</header>
+
 <div class="login-page">
 	<div class="form">
 		<form method="post" action="block,login.jsp" class="login-form">
 			<input type="hidden" name="actionFlag" value="login">
-			<input type="text" name="uname" placeholder="Username"/>
-			<input type="password" name="passwd" placeholder="Password"/>
+			<input type="text" name="uname" placeholder="Usuário"/>
+			<input type="password" name="passwd" placeholder="Senha"/>
 			<button>login</button>
-			<p class="message" id="message">Login required for accessing the network.</p>
+			<p class="message" id="message">Login necessário para acessar a internet.</p>
 		</form>
 	</div>
 </div>
@@ -140,7 +164,7 @@ body {
 <script>
 $(document).ready(function(){
 	if(#{fail_flag}){
-		$("#message").text("Wrong username or password!");
+		$("#message").text("Nome de usuário ou senha incorretos!");
 	}
 });
 </script>
